@@ -1,0 +1,30 @@
+Tiempo medio de llegada de clientes:         1.0 minutos
+Tiempo medio de servicio a clientes de tipo 1:         0.8 minutos
+Rango de servicio a clientes de tipo 2:         0.5     a     0.7 minutos
+Probabilidad de que un cliente sea de tipo 1:         0.7 
+Probabilidad de que un cliente sea de tipo 2:         0.3 
+Duracion de cada simulacion:      1000.0 minutos
+
+
+
+Promedio total del tiempo en la cola 1: 1.005 minutos
+
+
+Promedio total del tiempo en la cola 2: 2.652 minutos
+
+
+Numero promedio de clientes de tipo 1 en cola: 0.177 personas
+
+
+Numero promedio de clientes de tipo 2 en cola: 0.500 personas
+
+
+Proporcion de tiempo que los clientes de tipo 1 utilizaron los servidor A: 0.754
+
+Proporcion de tiempo que los clientes de tipo 2 utilizaron los servidor A: 0.246
+
+Proporcion de tiempo que los clientes de tipo 1 utilizaron los servidor B: 0.641
+
+Proporcion de tiempo que los clientes de tipo 2 utilizaron los servidor B: 0.359
+
+Total de simulaciones realizadas:  1000
