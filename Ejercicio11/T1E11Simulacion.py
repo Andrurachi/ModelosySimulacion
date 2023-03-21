@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+#importar librerías
 import numpy as np
 
 
@@ -30,7 +30,7 @@ def actualiza_area_num_en_q():
 
 # Simular llegada de cliente
 def llegada():
-    global servicios_disponibles_tipo_A, servicios_disponibles_tipo_B, clientes_tipo1_en_cola, clientes_tipo2_en_cola, tiempo_siguiente_evento, tiempos_llegada_clientes_tipo_1, tiempos_llegada_clientes_tipo_2, clientes_tipo1_servidor_A, clientes_tipo1_servidor_B, clientes_tipo2_servidores_A_B
+    global tiempo_siguiente_evento, servicios_disponibles_tipo_A, servicios_disponibles_tipo_B, clientes_tipo2_servidores_A_B, clientes_tipo1_en_cola, clientes_tipo2_en_cola, tiempos_llegada_clientes_tipo_1, tiempos_llegada_clientes_tipo_2, clientes_tipo1_servidor_A, clientes_tipo1_servidor_B
 
     tiempo_siguiente_evento[1] = tiempo_sim + var_expo(media_llegadas) # Agendar la siguiente llegada 
     tipo_cliente_actual = var_discreta_tipo_cliente(prob_de_cliente_1, prob_de_cliente_2) # Determinar el tipo cliente que llegó al sistema 
@@ -68,7 +68,7 @@ def llegada():
 
 # Simular salida de cliente tipo 1 de un servidor A (Se sabe que un servidor A está disponible)
 def salida_cliente_tipo1_servidor_A():
-    global servicios_disponibles_tipo_A, servicios_disponibles_tipo_B, tiempo_siguiente_evento, clientes_tipo1_en_cola, clientes_tipo2_en_cola, clientes_tipo1_servidor_A, clientes_tipo1_servidor_B, clientes_tipo2_servidores_A_B
+    global servicios_disponibles_tipo_A, servicios_disponibles_tipo_B, tiempo_siguiente_evento, clientes_tipo1_en_cola, clientes_tipo2_en_cola, clientes_tipo1_servidor_A, clientes_tipo2_servidores_A_B
     if clientes_tipo2_en_cola > 0 and servicios_disponibles_tipo_B > 0: # Si hay clientes tipo 2 en espera y el servidor B está vacío
         servicios_disponibles_tipo_B -= 1 # Se ocupa el servidor B y se mantiene ocupado uno de los servidores A
         clientes_tipo2_en_cola -= 1 # Se saca un cliente de tipo 2 de la cola
@@ -121,7 +121,7 @@ def salida_cliente_tipo1_servidor_B():
 
 # Simular salida de cliente tipo 2 (Se sabe que un servidor A y el servido B están disponibles)
 def salida_cliente_tipo2():
-    global servicios_disponibles_tipo_A, servicios_disponibles_tipo_B, tiempo_siguiente_evento, clientes_tipo1_en_cola, clientes_tipo2_en_cola, clientes_tipo1_servidor_A, clientes_tipo1_servidor_B, clientes_tipo2_servidores_A_B
+    global servicios_disponibles_tipo_A, servicios_disponibles_tipo_B, tiempo_siguiente_evento, clientes_tipo1_en_cola, clientes_tipo2_en_cola, clientes_tipo1_servidor_A, clientes_tipo2_servidores_A_B
     if clientes_tipo2_en_cola > 0: # Si hay clientes de tipo 2 en cola se atienden directamente
         clientes_tipo2_en_cola -= 1 # Se saca un cliente de tipo 2 de la cola
         tiempos_salida_clientes_tipo_2.append(tiempo_sim) # Se registra el tiempo de llegada del cliente
@@ -145,7 +145,7 @@ def salida_cliente_tipo2():
 
 # función que controla el tiempo y determina el tipo del evento que está por ocurrir
 def tiempo():
-    global tiempo_sim, tipo_evento_siguiente,  tiempo_ultimo_evento
+    global tiempo_sim, tipo_evento_siguiente
     tiempo_sim = min(tiempo_siguiente_evento) # Se establece el contador del tiempo en el momento de inicio del evento más cercano
     tipo_evento_siguiente = tiempo_siguiente_evento.index(min(tiempo_siguiente_evento)) # Se determina qué tipo de evento es el más cercano
 
